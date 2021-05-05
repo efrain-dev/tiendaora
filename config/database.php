@@ -41,7 +41,7 @@ return [
             'database' => 'xe',
             'service_name' => 'MIPDB',
             'username' => 'MIPDB',
-            'password' => '2328',
+            'password' => 'Hola12345',
             'charset' => '',
             'prefix' => '',
         ],
