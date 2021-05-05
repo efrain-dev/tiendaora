@@ -4722,6 +4722,20 @@
                 "oracle",
                 "pdo_oci"
             ],
+            "support": {
+                "issues": "https://github.com/yajra/laravel-oci8/issues",
+                "source": "https://github.com/yajra/laravel-oci8/tree/v8.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/yajra",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/yajra",
+                    "type": "patreon"
+                }
+            ],
             "time": "2020-09-09T07:14:59+00:00"
         },
         {
@@ -6913,5 +6927,6 @@
     "platform": {
         "php": "^7.3|^8.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }
