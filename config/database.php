@@ -36,15 +36,16 @@ return [
     'connections' => [
         'oracle' => [
             'driver' => 'oracle',
-            'host' => 'DESKTOP-G2B3I2B',
+            'host' => 'localhost',
             'port' => '1521',
             'database' => 'xe',
-            'service_name' => 'xe',
-            'username' => 'parcial1',
-            'password' => '1234',
+            'service_name' => 'MIPDB',
+            'username' => 'MIPDB',
+            'password' => '2328',
             'charset' => '',
             'prefix' => '',
         ],
+
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
