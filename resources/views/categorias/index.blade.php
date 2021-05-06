@@ -46,13 +46,7 @@
 
                 }).then((result) => {
                     if (result.isConfirmed) {
-
                         document.getElementById('delete-categorias-'+id).submit();
-                        Swal.fire(
-                            'Eliminado de la vida!',
-                            'Ha sido eliminado con exito',
-                            'success'
-                        )
                     }
                 })
             }
