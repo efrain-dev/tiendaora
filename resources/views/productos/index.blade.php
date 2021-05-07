@@ -21,7 +21,7 @@
                 <td>{{$producto->existencia}}</td>
                 <td>{{$producto->precio_compra}}</td>
                 <td>{{$producto->precio_venta}}</td>
-                <td>{{$producto->categoria_id_categoria}}</td>
+                <td>{{$producto->categoria}}</td>
                 <td><a class="btn btn-success"
                        href="{{route('productos.edit',['producto'=>$producto->id_producto])}}">Editar</a>
 
@@ -29,7 +29,7 @@
                 </td>
 
                 <form id="delete-productos-{{$producto->id_producto}}"
-                      action="{{route('productos.destroy',['producto'=>$producto])}}" method="POST"
+                      action="{{route('productos.destroy',['producto'=>$producto->id_producto])}}" method="POST"
                       style="display: none;">
                     @csrf
                     @method('DELETE')
