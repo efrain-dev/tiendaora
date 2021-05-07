@@ -4,7 +4,7 @@
         <tr>
             <th scope="col">Codigo</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Nit del cliente</th>
+            <th scope="col">Nit del Proveedor</th>
             <th scope="col">Dirección</th>
             <th scope="col">Teléfono</th>
             <th scope="col">Opciones</th>

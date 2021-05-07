@@ -9,17 +9,17 @@
         @csrf
         @method('PATCH')
         <div class="mb-3">
-            <label for="nombre_proveedor" class="form-label">Nombre Cliente</label>
+            <label for="nombre_proveedor" class="form-label">Nombre Proveedor</label>
             <input type="text" class="form-control" name="nombre_proveedor"
                    value="{{$proveedor->nombre_proveedor}}">
         </div>
         <div class="mb-3">
-            <label for="nit_proveedor" class="form-label">Nit del Cliente</label>
+            <label for="nit_proveedor" class="form-label">Nit del Proveedor</label>
             <input type="number" class="form-control" name="nit_proveedor"
                    value="{{$proveedor->nit_proveedor}}">
         </div>
         <div class="mb-3">
-            <label for="direccion_proveedor" class="form-label">Direccion Cliente</label>
+            <label for="direccion_proveedor" class="form-label">Direccion Proveedor</label>
             <input type="text" class="form-control" name="direccion_proveedor"
                    value="{{$proveedor->direccion_proveedor}}">
         </div>
