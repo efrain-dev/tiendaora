@@ -3,7 +3,9 @@
     @php($navLinks = [
     ['name' => 'dashboard', 'text' =>"Dashboard"],
     ['name' => 'categorias.index', 'text' =>"Categoria"],
-    ['name' => 'categorias.create', 'text' =>"Crear Categoria"]
+    ['name' => 'categorias.create', 'text' =>"Crear Categoria"],
+    ['name' => 'productos.index', 'text' =>"Producto"],
+    ['name' => 'productos.create', 'text' =>"Crear Producto"]
 
 ])
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

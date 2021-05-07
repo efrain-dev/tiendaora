@@ -11,7 +11,7 @@
         <tbody>
         @foreach($categorias as $categoria)
             <tr>
-                <th scope="row">1</th>
+                <th scope="row">{{$categoria->id_categoria}}</th>
                 <td>{{$categoria->nombre_categoria}}</td>
                 <td>{{$categoria->descripcion_categoria}}</td>
                 <td><a class="btn btn-success"
