@@ -6,6 +6,9 @@
     ['name' => 'categorias.create', 'text' =>"Crear Categoria"],
     ['name' => 'productos.index', 'text' =>"Producto"],
     ['name' => 'productos.create', 'text' =>"Crear Producto"],
+
+    ['name' => 'empleados.index', 'text' =>"Empleados"],
+    ['name' => 'empleados.create', 'text' =>"Ingresar Empleados"],
     ['name' => 'proveedors.index', 'text' =>"Proveedor"],
     ['name' => 'proveedors.create', 'text' =>"Crear Proveedor"]
 ])
