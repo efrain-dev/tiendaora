@@ -2,6 +2,11 @@
 
     <form class="container p-5" action="{{route('productos.update',['producto'=>$producto->id_producto])}}"
           method="POST">
+        <ul class="text-danger p-3">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
         @csrf
         @method('PATCH')
         <div class="mb-3">

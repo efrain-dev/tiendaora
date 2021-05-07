@@ -1,6 +1,11 @@
 <x-app-layout>
 
     <form class="container p-5" action="{{route('categorias.update',['categoria'=>$categoria->id_categoria])}}" method="POST">
+        <ul class="text-danger p-3">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
         @csrf
         @method('PATCH')
         <div class="mb-3">

@@ -1,10 +1,11 @@
 <x-app-layout>
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+
     <form class="container p-5" action="{{route('productos.store')}}" method="POST">
+        <ul class="text-danger p-3">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
         @csrf
 
         <div class="mb-3">

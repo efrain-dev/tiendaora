@@ -1,6 +1,11 @@
 <x-app-layout>
 
     <form class="container p-5" action="{{route('categorias.store')}}" method="POST">
+        <ul class="text-danger p-3">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
         @csrf
 
         <div class="mb-3">
