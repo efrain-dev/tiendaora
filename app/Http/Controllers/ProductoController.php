@@ -14,6 +14,7 @@ class ProductoController extends Controller
         $productos = DB::table('producto')
             ->leftJoin('categoria', 'producto.categoria_id_categoria', '=', 'categoria.id_categoria')
             ->select('producto.*','categoria.nombre_categoria as categoria')->paginate(20);
+
         return view('productos.index',compact('productos'));
     }
 
