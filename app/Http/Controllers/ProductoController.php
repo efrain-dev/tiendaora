@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductoPostRequest;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
 {
 
     public function index()
     {
-        $productos = Producto::all();
+        $productos = DB::table('producto')
+            ->leftJoin('categoria', 'producto.categoria_id_categoria', '=', 'categoria.id_categoria')
+            ->select('producto.*','categoria.nombre_categoria as categoria')->paginate(20);
         return view('productos.index',compact('productos'));
     }
 
@@ -20,13 +23,14 @@ class ProductoController extends Controller
     }
 
 
-    public function store(ProductoPostRequest $request )
+    public function store(ProductoPostRequest $request)
     {
+
         $data = $request->validated();
         $producto = new Producto;
         $producto->nombre_producto = $data['nombre_producto'];
         $producto->descripcion_producto = $data['descripcion_producto'];
-        $producto->cantidad = $data['cantidad'];
+        $producto->existencia = $data['existencia'];
         $producto->precio_compra = $data['precio_compra'];
         $producto->categoria_id_categoria = $data['categoria_id_categoria'];
         $producto->save();
@@ -50,7 +54,7 @@ class ProductoController extends Controller
         $data = $request->validated();
         $producto->nombre_producto = $data['nombre_producto'];
         $producto->descripcion_producto = $data['descripcion_producto'];
-        $producto->cantidad = $data['cantidad'];
+        $producto->existencia = $data['existencia'];
         $producto->precio_compra = $data['precio_compra'];
         $producto->categoria_id_categoria = $data['categoria_id_categoria'];
         $producto->save();

@@ -29,6 +29,7 @@ class ProductoPostRequest extends FormRequest
             'descripcion_producto'=>'required',
             'existencia'=>'required',
             'precio_compra'=>'required',
+            'categoria_id_categoria'=>'required',
         ];
     }
 }
