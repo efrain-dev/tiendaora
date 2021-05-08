@@ -16,6 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
         require('postcss-import'),
         require('tailwindcss'),
     ]);
+mix.sass('resources/css/fontawesome.scss', 'public/css');
 
 if (mix.inProduction()) {
     mix.version();

@@ -6,7 +6,7 @@
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
-        </ul>a
+        </ul>
         @csrf
         @method('PATCH')
         <div class="mb-3">

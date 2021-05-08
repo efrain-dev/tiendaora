@@ -1,40 +1,42 @@
 <x-app-layout>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Codigo</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Nit del Proveedor</th>
-            <th scope="col">Dirección</th>
-            <th scope="col">Teléfono</th>
-            <th scope="col">Opciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($proveedors as $proveedor)
+    <div class="container p-2">
+        <table class="table">
+            <thead>
             <tr>
-                <th scope="row">{{$proveedor->id_proveedor}}</th>
-                <td>{{$proveedor->nombre_proveedor}}</td>
-                <td>{{$proveedor->nit_proveedor}}</td>
-                <td>{{$proveedor->direccion_proveedor}}</td>
-                <td>{{$proveedor->telefono}}</td>
-                <td><a class="btn btn-success"
-                       href="{{route('proveedors.edit',['proveedor'=>$proveedor->id_proveedor])}}">Editar</a>
-
-                    <a class="btn btn-danger" href="javascript:void(0)" onclick="eliminarproveedor({{$proveedor->id_proveedor}})">Eliminar</a>
-                </td>
-
-                <form id="delete-proveedors-{{$proveedor->id_proveedor}}"
-                      action="{{route('proveedors.destroy',['proveedor'=>$proveedor->id_proveedor])}}" method="POST"
-                      style="display: none;">
-                    @csrf
-                    @method('DELETE')
-                </form>
-
+                <th scope="col">Codigo</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Nit del Proveedor</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Opciones</th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach($proveedors as $proveedor)
+                <tr>
+                    <th scope="row">{{$proveedor->id_proveedor}}</th>
+                    <td>{{$proveedor->nombre_proveedor}}</td>
+                    <td>{{$proveedor->nit_proveedor}}</td>
+                    <td>{{$proveedor->direccion_proveedor}}</td>
+                    <td>{{$proveedor->telefono}}</td>
+                    <td><a class="btn btn-success"
+                           href="{{route('proveedors.edit',['proveedor'=>$proveedor->id_proveedor])}}">Editar</a>
+
+                        <a class="btn btn-danger" href="javascript:void(0)" onclick="eliminarproveedor({{$proveedor->id_proveedor}})">Eliminar</a>
+                    </td>
+
+                    <form id="delete-proveedors-{{$proveedor->id_proveedor}}"
+                          action="{{route('proveedors.destroy',['proveedor'=>$proveedor->id_proveedor])}}" method="POST"
+                          style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     @push('scripts')
         <script>
             function eliminarproveedor(id){
