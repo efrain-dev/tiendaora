@@ -1,39 +1,42 @@
 <x-app-layout>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">nombre_categoria</th>
-            <th scope="col">descripcion_categoria</th>
-            <th scope="col">Opciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($categorias as $categoria)
+    <div class="container p-2">
+        <table class="table">
+            <thead>
             <tr>
-                <th scope="row">{{$categoria->id_categoria}}</th>
-                <td>{{$categoria->nombre_categoria}}</td>
-                <td>{{$categoria->descripcion_categoria}}</td>
-                <td><a class="btn btn-success"
-                       href="{{route('categorias.edit',['categoria'=>$categoria->id_categoria])}}">Editar</a>
-
-                    <a class="btn btn-danger" href="javascript:void(0)" onclick="eliminarcategoria({{$categoria->id_categoria}})">Eliminar</a>
-                </td>
-
-                <form id="delete-categorias-{{$categoria->id_categoria}}"
-                      action="{{route('categorias.destroy',['categoria'=>$categoria])}}" method="POST"
-                      style="display: none;">
-                    @csrf
-                    @method('DELETE')
-                </form>
-
+                <th scope="col">#</th>
+                <th scope="col">nombre_categoria</th>
+                <th scope="col">descripcion_categoria</th>
+                <th scope="col">Opciones</th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach($categorias as $categoria)
+                <tr>
+                    <th scope="row">{{$categoria->id_categoria}}</th>
+                    <td>{{$categoria->nombre_categoria}}</td>
+                    <td>{{$categoria->descripcion_categoria}}</td>
+                    <td><a class="btn btn-success"
+                           href="{{route('categorias.edit',['categoria'=>$categoria->id_categoria])}}">Editar</a>
+
+                        <a class="btn btn-danger" href="javascript:void(0)"
+                           onclick="eliminarcategoria({{$categoria->id_categoria}})">Eliminar</a>
+                    </td>
+
+                    <form id="delete-categorias-{{$categoria->id_categoria}}"
+                          action="{{route('categorias.destroy',['categoria'=>$categoria])}}" method="POST"
+                          style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     @push('scripts')
         <script>
-            function eliminarcategoria(id){
+            function eliminarcategoria(id) {
                 Swal.fire({
                     title: 'Estas seguro?',
                     text: "Ya no podras restaurar esta informacion!",
@@ -46,7 +49,7 @@
 
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        document.getElementById('delete-categorias-'+id).submit();
+                        document.getElementById('delete-categorias-' + id).submit();
                     }
                 })
             }

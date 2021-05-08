@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductoPostRequest;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $productos = DB::table('producto')
-            ->leftJoin('categoria', 'producto.categoria_id_categoria', '=', 'categoria.id_categoria')
-            ->select('producto.*','categoria.nombre_categoria as categoria')->paginate(20);
-        return view('productos.index',compact('productos'));
+        $data = $request->data;
+        $productos =   DB::select('begin
+        select_productos(\''.$data.'\');
+        end;');
+        $productos = $this->arrayPaginator($productos, $request);
+        return view('productos.index',['productos'=>$productos,'data'=>$data]);
     }
 
     public function create()
@@ -58,6 +61,11 @@ class ProductoController extends Controller
         $producto->precio_compra = $data['precio_compra'];
         $producto->categoria_id_categoria = $data['categoria_id_categoria'];
         $producto->save();
+        $procedureName = 'update_precio_venta';
+        $bindings = [
+            'id_producto'  => $producto->id_producto,
+        ];
+        $result = DB::executeProcedure($procedureName, $bindings);
         return redirect()->route('productos.index')->with('status','success')->with('statusT', 'Se ha actualizado con exito');
 
     }
@@ -69,5 +77,14 @@ class ProductoController extends Controller
         $producto->delete();
         return redirect()->route('productos.index')->with('status','success')->with('statusT', 'Se ha eliminado con exito');
 
+    }
+    private function arrayPaginator($array, $request)
+    {
+        $total = count($array);
+        $page = $request->page ?? 1;
+        $perPage = 10;
+        $offset = ($page - 1) * $perPage;
+        $items = array_slice($array, $offset, $perPage);
+        return new LengthAwarePaginator($items, $total, $perPage, $page, ['path' => $request->url(), 'query' => $request->query()]);
     }
 }
