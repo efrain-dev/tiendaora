@@ -4,8 +4,70 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bb604f7532a591848d66ddd62161816d",
+    "content-hash": "54c9e3d37dc41c02e7ffd9a7af291a10",
     "packages": [
+        {
+            "name": "asantibanez/livewire-select",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/asantibanez/livewire-select.git",
+                "reference": "e15bd41a0f913509b096ad99cbd6b1c462e0bf76"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/asantibanez/livewire-select/zipball/e15bd41a0f913509b096ad99cbd6b1c462e0bf76",
+                "reference": "e15bd41a0f913509b096ad99cbd6b1c462e0bf76",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "livewire/livewire": "^2.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.0|^6.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Asantibanez\\LivewireSelect\\LivewireSelectServiceProvider"
+                    ],
+                    "aliases": {
+                        "LivewireSelect": "Asantibanez\\LivewireSelect\\LivewireSelectFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Asantibanez\\LivewireSelect\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrés Santibáñez",
+                    "email": "santibanez.andres@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Livewire dropdown select component",
+            "homepage": "https://github.com/asantibanez/livewire-select",
+            "keywords": [
+                "asantibanez",
+                "livewire-select"
+            ],
+            "support": {
+                "issues": "https://github.com/asantibanez/livewire-select/issues",
+                "source": "https://github.com/asantibanez/livewire-select/tree/v2.0.0"
+            },
+            "time": "2020-12-13T21:30:25+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.3",
@@ -2668,6 +2730,94 @@
                 "uuid"
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "rawilk/laravel-form-components",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rawilk/laravel-form-components.git",
+                "reference": "2249c9119958f9027a4f0c3a9c88be37da1e7f0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rawilk/laravel-form-components/zipball/2249c9119958f9027a4f0c3a9c88be37da1e7f0d",
+                "reference": "2249c9119958f9027a4f0c3a9c88be37da1e7f0d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/filesystem": "^8.0",
+                "illuminate/support": "^8.0",
+                "illuminate/view": "^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "blade-ui-kit/blade-heroicons": "^0.3",
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "gajus/dindent": "^2.0",
+                "orchestra/testbench": "^6.4",
+                "phpunit/phpunit": "^9.4",
+                "psalm/plugin-laravel": "^1.4",
+                "vimeo/psalm": "^4.0"
+            },
+            "suggest": {
+                "blade-ui-kit/blade-heroicons": "Required for the default icons used in this package",
+                "livewire/livewire": "Consider livewire for handling your form submissions"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rawilk\\FormComponents\\FormComponentsServiceProvider"
+                    ],
+                    "aliases": {
+                        "FormComponents": "Rawilk\\FormComponents\\Facades\\FormComponents"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rawilk\\FormComponents\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Randall Wilk",
+                    "email": "randall@randallwilk.dev",
+                    "homepage": "https://randallwilk.dev",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Set of Blade components for TailwindCSS forms.",
+            "homepage": "https://github.com/rawilk/laravel-form-components",
+            "keywords": [
+                "blade",
+                "date picker",
+                "form",
+                "laravel",
+                "laravel-form-components",
+                "rawilk",
+                "tailwind"
+            ],
+            "support": {
+                "issues": "https://github.com/rawilk/laravel-form-components/issues",
+                "source": "https://github.com/rawilk/laravel-form-components/tree/2.0.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/rawilk",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-30T19:39:22+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

@@ -9,16 +9,16 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
         @livewireStyles
         <link rel="stylesheet" href="{{ mix('css/fontawesome.css') }}">
-
+        @fcStyles
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+
+
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -42,9 +42,8 @@
         </div>
 
         @stack('modals')
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        @stack('scripts')
+
             @if(session('status'))
                 <script>
                         Swal.fire({
@@ -56,6 +55,11 @@
                         })
                 </script>
             @endif
+        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/general.js') }}" defer></script>
+        @fcStyles
         @livewireScripts
+        @stack('scripts')
+
     </body>
 </html>
