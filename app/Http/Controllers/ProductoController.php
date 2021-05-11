@@ -14,7 +14,7 @@ class ProductoController extends Controller
     {
         $data = $request->data;
         $productos =   DB::select('begin
-        select_productos(\''.$data.'\');
+        index_productos(\''.$data.'\');
         end;');
         $productos = $this->arrayPaginator($productos, $request);
         return view('productos.index',['productos'=>$productos,'data'=>$data]);
@@ -86,5 +86,12 @@ class ProductoController extends Controller
         $offset = ($page - 1) * $perPage;
         $items = array_slice($array, $offset, $perPage);
         return new LengthAwarePaginator($items, $total, $perPage, $page, ['path' => $request->url(), 'query' => $request->query()]);
+    }
+    public function getProductos(Request $request)
+    {
+        $query = DB::select('begin
+        select_productos;
+        end;');
+        return response()->json($query);
     }
 }

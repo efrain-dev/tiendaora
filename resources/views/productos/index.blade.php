@@ -1,6 +1,12 @@
 <x-app-layout>
-    <div class="container p-2">
+    <div class="container p-2" id="app">
+        <livewire:product-select
+            name="id_producto"
+            placeholder="Choose a Car Model"
+            :searchable="true"
+        />
         <div class="d-flex justify-content-around align-items-center my-3">
+
             <form class="col-lg-10" method="GET" action="{{route('productos.index')}}">
                 <div class="input-group col-10">
                     <input type="text" class="form-control " placeholder="...." name="data" >
