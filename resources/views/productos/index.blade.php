@@ -1,27 +1,22 @@
 <x-app-layout>
-    <div class="container p-2" id="app">
-        <livewire:product-select
-            name="id_producto"
-            placeholder="Choose a Car Model"
-            :searchable="true"
-        />
-        <div class="d-flex justify-content-around align-items-center my-3">
+    <div class=" container p-2" id="app">
+                <div class="d-flex justify-content-around align-items-center my-3">
 
-            <form class="col-lg-10" method="GET" action="{{route('productos.index')}}">
-                <div class="input-group col-10">
-                    <input type="text" class="form-control " placeholder="...." name="data" >
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i
-                                class="fas fa-search"></i></button>
+                    <form class="col-lg-10" method="GET" action="{{route('productos.index')}}">
+                        <div class="input-group col-10">
+                            <input type="text" class="form-control " placeholder="...." name="data" >
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i
+                                        class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <div>
+                        <a class="btn btn-success  d-flex justify-content-around align-items-center"
+                           href="{{route('productos.create')}}"><i class="fas fa-plus text-white"></i> &nbsp;Nuevo
+                        </a>
                     </div>
                 </div>
-            </form>
-            <div>
-                <a class="btn btn-success  d-flex justify-content-around align-items-center"
-                   href="{{route('productos.create')}}"><i class="fas fa-plus text-white"></i> &nbsp;Nuevo
-                </a>
-            </div>
-        </div>
 
         <table class="table">
             <thead>
@@ -68,6 +63,7 @@
             {{$productos->appends(['data' => $data])->links()}}
         </div>
     </div>
+
     @push('scripts')
         <script>
             function eliminarproducto(id) {

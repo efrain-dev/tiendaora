@@ -114,9 +114,8 @@
             <h4>Cantidad:{{$cantidad}}</h4>
             <h4>ISR:{{$isr_total}}</h4>
             <h4>IVA:{{$iva_total}}</h4>
-            <h4>Subtotal:{{$subtotal}}</h4>
             <h4>Total:{{$total}}</h4>
-            <button class="btn btn-success" id="btnSetProduct" type="button">
+            <button class="btn btn-success" id="btnSetProduct" type="button" wire:click="insertFactura()">
                 Generar <i class="fas fa-save text-white"></i>
             </button>
 
