@@ -3,13 +3,17 @@
 namespace App\Http\Livewire;
 
 use App\Models\Cliente;
+use App\Models\DetalleVenta;
+use App\Models\FacturaVenta;
 use App\Models\Producto;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class FacturacionVenta extends Component
 {
-    public $nit_cliente, $nombre_cliente, $direccion_cliente, $cantidad, $total, $isr_total, $iva_total, $subtotal;
+    public $nit_cliente, $id_cliente, $nombre_cliente, $direccion_cliente, $cantidad, $total, $isr_total, $iva_total, $subtotal;
     public $id_producto, $precio_venta, $existencia, $nombre_producto, $cantidad_venta;
     public $detalle_venta = [];
     public $buscar;
@@ -28,6 +32,7 @@ class FacturacionVenta extends Component
         $cliente = Cliente::where('nit_cliente', $this->nit_cliente)->first();
         if ($cliente) {
             $this->nombre_cliente = $cliente->nombre_cliente;
+            $this->id_cliente = $cliente->id_cliente;
             $this->direccion_cliente = $cliente->direccion_cliente;
             $this->emit('focus-input-product');
 
@@ -50,11 +55,10 @@ class FacturacionVenta extends Component
         $this->iva_total = 0;
         foreach ($this->detalle_venta as $detalle) {
             $this->cantidad += $detalle['cantidad'];
-            $this->subtotal += ($detalle['precio_venta'] * $detalle['cantidad']);
+            $this->total += ($detalle['precio_venta'] * $detalle['cantidad']);
             $this->isr_total += ($detalle['precio_venta'] * $detalle['cantidad']) * 0.05;
             $this->iva_total += ($detalle['precio_venta'] * $detalle['cantidad']) * 0.12;
         }
-        $this->total = $this->subtotal + $this->isr_total + $this->iva_total;
     }
 
     public function mount()
@@ -127,7 +131,22 @@ class FacturacionVenta extends Component
         $this->picked = false;
         $this->calcTotal();
     }
+    public function insertFactura(){
+        $factura = new FacturaVenta();
+        $factura->no_factura =0;
+        $factura->cliente_id_cliente = $this->id_cliente;
+        $factura->users_id = Auth::user()->id;
+        $factura->save();
+        foreach($this->detalle_venta as $detalle){
+            $detalle_venta= new DetalleVenta();
+            $detalle_venta->precio_venta =$detalle["precio_venta"];
+            $detalle_venta->cantidad =$detalle["cantidad"];
+            $detalle_venta->producto_id_producto =$detalle["producto_id_producto"];
+            $detalle_venta->factura_venta_id_venta =$factura->id_venta;
+            $detalle_venta->save();
 
+        }
+    }
     public function deleteDetalle($key)
     {
         unset($this->detalle_venta[$key]);
