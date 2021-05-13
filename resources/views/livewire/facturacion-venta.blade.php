@@ -7,20 +7,29 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label class="form-label">Nit</label>
-                <input class="form-control" type="text" id="nit_cliente" maxlength="9" wire:model="nit_cliente"
+                <input class="form-control @error('nit_cliente') is-invalid @enderror" type="text" name="nit_cliente"
+                       maxlength="9" wire:model="nit_cliente"
                        wire:keydown.tab="buscarCliente()">
+                @error('nit_cliente') <span class="text-red-500">{{ $message }}</span>@enderror
+
             </div>
             <div class="form-group col-md-6">
                 <label class="form-label">Nombre</label>
-                <input class="form-control" type="text" id="nombre_cliente" maxlength="150" autocomplete="off"
+                <input class="form-control @error('nombre_cliente') is-invalid @enderror" type="text"
+                       name="nombre_cliente" maxlength="150" autocomplete="off"
                        wire:model="nombre_cliente">
+                @error('nombre_cliente') <span class="text-red-500">{{ $message }}</span>@enderror
+
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-12">
                 <label class="form-label">Direccion</label>
-                <input class="form-control" type="text" id="direccion_cliente" autocomplete="off" maxlength="150"
+                <input class="form-control @error('direccion_cliente') is-invalid @enderror" type="text"
+                       name="direccion_cliente" autocomplete="off" maxlength="150"
                        wire:model="direccion_cliente">
+                @error('direccion_cliente') <span class="text-red-500">{{ $message }}</span>@enderror
+
             </div>
         </div>
 
@@ -46,9 +55,9 @@
                             @if(!$picked)
                                 <div class="shadow rounded px-3 pt-3 pb-0">
                                     @foreach($productos as $producto)
-                                        <div style="cursor: pointer;" >
-                                            <option wire:click="asignarProducto('{{ $producto->id_producto}}')" >
-                                                {{ $producto->nombre_producto }}
+                                        <div style="cursor: pointer;">
+                                            <option wire:click="asignarProducto('{{ $producto->id_producto}}')">
+                                                {{ $producto->nombre_producto }}-Existencia- {{ $producto->existencia }}
                                             </option>
                                         </div>
                                         <hr>
@@ -56,26 +65,33 @@
                                 </div>
                             @endif
                         @else
-                            <small class="form-text text-muted">Comienza a teclear para que aparezcan los resultados</small>
+                            <small class="form-text text-muted">Comienza a teclear para que aparezcan los
+                                resultados</small>
                         @endif
                         @enderror
                 </div>
 
             </div>
             <div class="form-group col-md-5 my-2">
-                <input class="form-control String" placeholder="Cant."
-                       onkeypress="return checkNum(event)" title="Cantidad" type="text" id="cantidad" wire:model="cantidad_venta"
+                <input class="form-control String  @error('cantidad_venta') is-invalid @enderror" placeholder="Cant."
+                       onkeypress="return checkNum(event)" title="Cantidad" type="text" name="cantidad_venta"
+                       wire:model="cantidad_venta"
                        autocomplete="off"
                        maxlength="9">
+                @error('cantidad_venta') <span class="text-red-500">{{ $message }}</span>@enderror
             </div>
 
             <div class="form-group col-md-6 my-2">
-                <input class="form-control String" placeholder="Precio" wire:model="precio_venta"
+                <input class="form-control String @error('precio_venta') is-invalid @enderror" placeholder="Precio"
+                       wire:model="precio_venta"
                        disabled
-                       onkeypress="return check_digit(event,this,8,5);" autocomplete="off" type="text" id="precio1">
+                       onkeypress="return check_digit(event,this,8,5);" autocomplete="off" type="text"
+                       name="precio_venta">
+                @error('precio_venta') <span class="text-red-500">{{ $message }}</span>@enderror
+
             </div>
             <div class="form-group col-md-1 my-2 mx-auto">
-                <button class="btn btn-success" id="btnSetProduct" type="button" wire:click="setProducto" >
+                <button class="btn btn-success" id="btnSetProduct" type="button" wire:click="setProducto">
                     <i class="fas fa-save text-white"></i>
                 </button>
             </div>
@@ -94,14 +110,16 @@
                 </thead>
                 <tbody>
                 @foreach($detalle_venta  as $key => $detalle)
-                <tr>
-                    <td class="m-auto p-0">{{$detalle['nombre_producto']}}</td>
-                    <td class="m-auto p-0">{{$detalle['precio_venta']}}</td>
-                    <td class="m-auto p-0">{{$detalle['existencia']}}</td>
-                    <td class="m-auto p-0" onclick="editDetalle({{$key}},{{$detalle['cantidad']}})">{{$detalle['cantidad']}}</td>
-                    <td class="m-auto p-0"><i style="color: #ff0000; cursor: pointer;"  wire:click="deleteDetalle({{$key}})" class="far fa-trash-alt"></i>
-                    </td>
-                </tr>
+                    <tr>
+                        <td class="m-auto p-0">{{$detalle['nombre_producto']}}</td>
+                        <td class="m-auto p-0">{{$detalle['precio_venta']}}</td>
+                        <td class="m-auto p-0">{{$detalle['existencia']}}</td>
+                        <td class="m-auto p-0"
+                            onclick="editDetalle({{$key}},{{$detalle['cantidad']}})">{{$detalle['cantidad']}}</td>
+                        <td class="m-auto p-0"><i style="color: #ff0000; cursor: pointer;"
+                                                  wire:click="deleteDetalle({{$key}})" class="far fa-trash-alt"></i>
+                        </td>
+                    </tr>
                 @endforeach
 
                 </tbody>
@@ -127,20 +145,26 @@
 @push('scripts')
     <script>
         function cambiodeid() {
-        let id = document.getElementById('id_producto').value
+            let id = document.getElementById('id_producto').value
 
-        @this.call('buscarProducto',id)
+        @this.call('buscarProducto', id)
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            this.livewire.on('focus-input-cantidad',()=>{document.getElementById('cantidad').focus()})
-            this.livewire.on('focus-input-product',()=>{document.getElementById('buscar').focus()})
-            this.livewire.on('focus-btn-product',()=>{document.getElementById('btnSetProduct').focus()})
+            this.livewire.on('focus-input-cantidad', () => {
+                document.getElementById('cantidad').focus()
+            })
+            this.livewire.on('focus-input-product', () => {
+                document.getElementById('buscar').focus()
+            })
+            this.livewire.on('focus-btn-product', () => {
+                document.getElementById('btnSetProduct').focus()
+            })
 
         })
 
 
-        function editDetalle(index,cantidad){
+        function editDetalle(index, cantidad) {
             Swal.fire({
                 title: "Nueva cantidad",
                 input: "number",
@@ -151,8 +175,13 @@
                 confirmButtonColor: 'green',
             })
                 .then(resultado => {
-                let datos = [index, cantidad,parseInt(resultado.value)]
-                @this.call('editDetalle', datos)
+                    let datos = [index, cantidad, parseInt(resultado.value)]
+                    if (resultado.isConfirmed) {
+                    @this.call('editDetalle', datos)
+                    } else {
+                        SwalAlert('question', 'No se modifico nada',3000)
+
+                    }
                 });
         }
 

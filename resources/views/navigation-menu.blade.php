@@ -3,6 +3,7 @@
     @php($navLinks = [
     ['name' => 'dashboard', 'text' =>"Dashboard"],
     ['name' => 'facturacion-ventas', 'text' =>"Ventas"],
+    ['name' => 'mostrar-ventas', 'text' =>"Ver Ventas"],
     ['name' => 'facturacion-compras', 'text' =>"Compras"]
 ])
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

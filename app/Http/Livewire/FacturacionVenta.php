@@ -29,6 +29,7 @@ class FacturacionVenta extends Component
 
     public function buscarCliente()
     {
+        $this->resetValidation();
         $cliente = Cliente::where('nit_cliente', $this->nit_cliente)->first();
         if ($cliente) {
             $this->nombre_cliente = $cliente->nombre_cliente;
@@ -71,11 +72,9 @@ class FacturacionVenta extends Component
     public function updatedBuscar()
     {
         $this->picked = false;
-
         $this->validate([
             "buscar" => "required|min:2"
         ]);
-
         $this->productos = DB::select('begin
         select_productos(\'' . trim($this->buscar) . '\');
         end;');
@@ -106,6 +105,7 @@ class FacturacionVenta extends Component
     public function setProducto()
     {
 
+        $this->validate(['cantidad_venta' => 'required|numeric|min:1','precio_venta' => 'required|numeric']);
         if ($this->vereficarExistencia()) {
             $this->resetAndInsert();
             $this->emit('focus-input-product');
@@ -117,10 +117,7 @@ class FacturacionVenta extends Component
             ]);
         }
     }
-
-    private function resetAndInsert()
-    {
-        $this->storeDetalle();
+    private function resetSelectProduct(){
         $this->id_producto = null;
         $this->nombre_producto = null;
         $this->existencia = null;
@@ -129,11 +126,38 @@ class FacturacionVenta extends Component
         $this->buscar = "";
         $this->productos = [];
         $this->picked = false;
+        $this->resetValidation();
+
+    }
+    private function resetFactura(){
+        $this->detalle_venta = [];
+        $this->nit_cliente = null;
+        $this->direccion_cliente = null;
+        $this->nombre_cliente = null;
+        $this->cantidad = null;
+        $this->total = null;
+        $this->isr_total = null;
+        $this->iva_total = null;
+        $this->subtotal = null;
+    }
+    private function resetAndInsert()
+    {
+        $this->resetValidation();
+        $this->storeDetalle();
+        $this->resetSelectProduct();
         $this->calcTotal();
     }
     public function insertFactura(){
+        $this->resetSelectProduct();
+        if(!$this->detalle_venta){
+            $this->emit('swal:alert', [
+                'icon' => 'error',
+                'title' => 'No hay ningun detalle ingresado',
+                'timeout' => 3000
+            ]);
+        }
+        $this->validate(['nombre_cliente' => 'required','nit_cliente'=> 'required']);
         $factura = new FacturaVenta();
-        $factura->no_factura =0;
         $factura->cliente_id_cliente = $this->id_cliente;
         $factura->users_id = Auth::user()->id;
         $factura->save();
@@ -144,8 +168,13 @@ class FacturacionVenta extends Component
             $detalle_venta->producto_id_producto =$detalle["producto_id_producto"];
             $detalle_venta->factura_venta_id_venta =$factura->id_venta;
             $detalle_venta->save();
-
         }
+        $this->resetFactura();
+        $this->emit('swal:alert', [
+            'icon' => 'success',
+            'title' => 'Factura generada con exito',
+            'timeout' => 3000
+        ]);
     }
     public function deleteDetalle($key)
     {
@@ -154,7 +183,11 @@ class FacturacionVenta extends Component
     public function editDetalle($product)
     {
         if ($product[2]<=$this->detalle_venta[$product[0]]['existencia']){
-            $this->detalle_venta[$product[0]]['cantidad'] = $product[2];
+            if (!$product[2]==0){
+                $this->detalle_venta[$product[0]]['cantidad'] = $product[2];
+            }else{
+                $this->deleteDetalle($product[0]);
+            }
             $this->emit('swal:alert', [
                 'icon' => 'success',
                 'title' => 'Cantidad Modificada con exito',
@@ -172,6 +205,7 @@ class FacturacionVenta extends Component
     }
     public function storeDetalle()
     {
+
         $indice = array_search($this->id_producto, array_column($this->detalle_venta, 'producto_id_producto'));
 
         if (false !== $indice){
