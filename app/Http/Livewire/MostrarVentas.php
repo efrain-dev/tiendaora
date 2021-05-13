@@ -26,7 +26,7 @@ class MostrarVentas extends Component
         $query =   DB::select('begin
         mostrar_ventas(\''.Carbon::parse(strftime($from))->format('Y-m-d h:m:s').'\',\''.Carbon::parse(strftime($to))->addDay()->format('Y-m-d h:m:s').'\');
         end;');
-        $ventas = (new Collection($query))->paginate(2);
+        $ventas = (new Collection($query))->paginate(10);
 
         return view('livewire.mostrar-ventas',compact('ventas'));
     }
@@ -35,13 +35,5 @@ class MostrarVentas extends Component
         $this->from = $this->from == '' ? now()->startOfMonth()->format('Y-m-d') : Carbon::parse(strftime($this->from))->format('Y-m-d');
         $this->to = $this->to == '' ? now()->format('Y-m-d') : Carbon::parse(strftime($this->to))->format('Y-m-d');
     }
-    private function arrayPaginator($array, $request)
-    {
-        $total = count($array);
-        $page = $request->page ?? 1;
-        $perPage = 10;
-        $offset = ($page - 1) * $perPage;
-        $items = array_slice($array, $offset, $perPage);
-        return new LengthAwarePaginator($items, $total, $perPage, $page, ['path' => $request->url(), 'query' => $request->query()]);
-    }
+
 }
