@@ -27,6 +27,7 @@ Route::resource('impuestoventas',\App\Http\Controllers\ImpuestoVentaController::
 Route::resource('impuestocompras',\App\Http\Controllers\ImpuestoCompraController::class);
 Route::resource('clientes',\App\Http\Controllers\ClienteController::class);
 Route::resource('proveedors',\App\Http\Controllers\ProveedorController::class);
+Route::resource('anulacionventas',\App\Http\Controllers\AnulacionVentaController::class);
 Route::get('/facturacion-ventas', \App\Http\Livewire\FacturacionVenta::class)->name('facturacion-ventas');
 Route::get('/facturacion-compras', \App\Http\Livewire\FacturacionCompra::class)->name('facturacion-compras');
 Route::get('/mostrar-ventas', \App\Http\Livewire\MostrarVentas::class)->name('mostrar-ventas');
