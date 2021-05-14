@@ -23,7 +23,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::resource('categorias',\App\Http\Controllers\CategoriaController::class);
 Route::resource('productos',\App\Http\Controllers\ProductoController::class);
-
+Route::resource('impuestoventas',\App\Http\Controllers\ImpuestoVentaController::class);
+Route::resource('impuestocompras',\App\Http\Controllers\ImpuestoCompraController::class);
 Route::resource('clientes',\App\Http\Controllers\ClienteController::class);
 Route::resource('proveedors',\App\Http\Controllers\ProveedorController::class);
 Route::get('/facturacion-ventas', \App\Http\Livewire\FacturacionVenta::class)->name('facturacion-ventas');
