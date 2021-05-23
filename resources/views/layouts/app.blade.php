@@ -15,7 +15,6 @@
 
         @livewireStyles
         <link rel="stylesheet" href="{{ mix('css/fontawesome.css') }}">
-        @fcStyles
         <!-- Scripts -->
 
 
@@ -57,7 +56,6 @@
             @endif
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="{{ asset('js/general.js') }}" defer></script>
-        @fcStyles
         @livewireScripts
         @stack('scripts')
 
