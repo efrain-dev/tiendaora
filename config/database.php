@@ -36,12 +36,12 @@ return [
     'connections' => [
         'oracle' => [
             'driver' => 'oracle',
-            'host' => 'localhost',
-            'port' => '1521',
-            'database' => 'xe',
-            'service_name' => 'MIPDB',
-            'username' => 'MIPDB',
-            'password' => 'Hola12345',
+            'host' => env('DB_HOST'),
+            'port' => env('DB_PORT'),
+            'database' => env('DB_DATABASE_ORA'),
+            'service_name' => env('DB_DATABASE'),
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
             'charset' => '',
             'prefix' => '',
         ],
