@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "54c9e3d37dc41c02e7ffd9a7af291a10",
+    "content-hash": "6360f859d72c8cf603678ee19ffa23f4",
     "packages": [
         {
             "name": "asantibanez/livewire-select",
@@ -2732,94 +2732,6 @@
             "time": "2020-08-18T17:17:46+00:00"
         },
         {
-            "name": "rawilk/laravel-form-components",
-            "version": "2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rawilk/laravel-form-components.git",
-                "reference": "2249c9119958f9027a4f0c3a9c88be37da1e7f0d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rawilk/laravel-form-components/zipball/2249c9119958f9027a4f0c3a9c88be37da1e7f0d",
-                "reference": "2249c9119958f9027a4f0c3a9c88be37da1e7f0d",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "illuminate/filesystem": "^8.0",
-                "illuminate/support": "^8.0",
-                "illuminate/view": "^8.0",
-                "php": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "blade-ui-kit/blade-heroicons": "^0.3",
-                "friendsofphp/php-cs-fixer": "^2.16",
-                "gajus/dindent": "^2.0",
-                "orchestra/testbench": "^6.4",
-                "phpunit/phpunit": "^9.4",
-                "psalm/plugin-laravel": "^1.4",
-                "vimeo/psalm": "^4.0"
-            },
-            "suggest": {
-                "blade-ui-kit/blade-heroicons": "Required for the default icons used in this package",
-                "livewire/livewire": "Consider livewire for handling your form submissions"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Rawilk\\FormComponents\\FormComponentsServiceProvider"
-                    ],
-                    "aliases": {
-                        "FormComponents": "Rawilk\\FormComponents\\Facades\\FormComponents"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Rawilk\\FormComponents\\": "src"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Randall Wilk",
-                    "email": "randall@randallwilk.dev",
-                    "homepage": "https://randallwilk.dev",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Set of Blade components for TailwindCSS forms.",
-            "homepage": "https://github.com/rawilk/laravel-form-components",
-            "keywords": [
-                "blade",
-                "date picker",
-                "form",
-                "laravel",
-                "laravel-form-components",
-                "rawilk",
-                "tailwind"
-            ],
-            "support": {
-                "issues": "https://github.com/rawilk/laravel-form-components/issues",
-                "source": "https://github.com/rawilk/laravel-form-components/tree/2.0.2"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/rawilk",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-11-30T19:39:22+00:00"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.2.7",
             "source": {
@@ -4812,28 +4724,31 @@
         },
         {
             "name": "yajra/laravel-oci8",
-            "version": "v8.0.0",
+            "version": "v8.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-oci8.git",
-                "reference": "000dba8b3c4e7a5f18731a6d90233bbdd72ff193"
+                "reference": "157fbae1d2eb11841ca43156a217705b77969208"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-oci8/zipball/000dba8b3c4e7a5f18731a6d90233bbdd72ff193",
-                "reference": "000dba8b3c4e7a5f18731a6d90233bbdd72ff193",
+                "url": "https://api.github.com/repos/yajra/laravel-oci8/zipball/157fbae1d2eb11841ca43156a217705b77969208",
+                "reference": "157fbae1d2eb11841ca43156a217705b77969208",
                 "shasum": ""
             },
             "require": {
                 "ext-oci8": ">=2.0.0",
                 "ext-pdo": "*",
                 "illuminate/database": "^8",
+                "illuminate/pagination": "^8",
                 "illuminate/support": "^8",
-                "php": "^7.3",
-                "yajra/laravel-pdo-via-oci8": "^2"
+                "illuminate/validation": "^8",
+                "php": "^7.3|^8.0",
+                "yajra/laravel-pdo-via-oci8": "^2.0|^3.0"
             },
             "require-dev": {
-                "mockery/mockery": "^1.3.1",
+                "mockery/mockery": "^1.4.2",
+                "orchestra/testbench": "^6.5",
                 "phpunit/phpunit": "^8.4|^9.0"
             },
             "type": "library",
@@ -4843,7 +4758,8 @@
                 },
                 "laravel": {
                     "providers": [
-                        "Yajra\\Oci8\\Oci8ServiceProvider"
+                        "Yajra\\Oci8\\Oci8ServiceProvider",
+                        "Yajra\\Oci8\\Oci8ValidationServiceProvider"
                     ]
                 }
             },
@@ -4874,7 +4790,7 @@
             ],
             "support": {
                 "issues": "https://github.com/yajra/laravel-oci8/issues",
-                "source": "https://github.com/yajra/laravel-oci8/tree/v8.0.0"
+                "source": "https://github.com/yajra/laravel-oci8/tree/v8.4.0"
             },
             "funding": [
                 {
@@ -4886,7 +4802,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-09-09T07:14:59+00:00"
+            "time": "2021-04-23T07:16:11+00:00"
         },
         {
             "name": "yajra/laravel-pdo-via-oci8",
@@ -7075,7 +6991,9 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.3|^8.0",
+        "ext-json": "*",
+        "ext-pdo": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
