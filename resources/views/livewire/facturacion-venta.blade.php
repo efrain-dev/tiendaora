@@ -1,7 +1,7 @@
 <div>
 
     <div class="container shadow-lg rounded p-5 mt-5">
-
+        <div style="text-align: center"><h3 class="my-3 display-5">Facturacion Ventas</h3></div>
         <h3 class="my-3 display-5">Datos de cliente</h3>
         <hr>
         <div class="form-row">
@@ -116,8 +116,7 @@
                         <td class="m-auto p-0">{{$detalle['existencia']}}</td>
                         <td class="m-auto p-0"
                             onclick="editDetalle({{$key}},{{$detalle['cantidad']}})">{{$detalle['cantidad']}}</td>
-                        <td class="m-auto p-0"><i style="color: #ff0000; cursor: pointer;"
-                                                  wire:click="deleteDetalle({{$key}})" class="far fa-trash-alt"></i>
+                        <td class="m-auto p-0"><i style="color: #ff0000; cursor: pointer;" wire:click="deleteDetalle({{$key}})" class="far fa-trash-alt"></i>
                         </td>
                     </tr>
                 @endforeach
@@ -160,7 +159,9 @@
             this.livewire.on('focus-btn-product', () => {
                 document.getElementById('btnSetProduct').focus()
             })
-
+            this.livewire.on('descargar-pdf', data => {
+                window.open('/descargar-pdf/'+data.id)
+            })
         })
 
 

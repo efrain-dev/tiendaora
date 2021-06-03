@@ -1,0 +1,134 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+html{
+    padding-left: 2rem;
+}
+body{
+
+    position: relative;
+}
+
+.d-row {
+    display: block;
+}
+
+#mainInfo{
+    margin-left: 2rem;
+
+    height: 15%;
+    margin-top: 4rem;
+}
+#mainInfo> div{
+    height: inherit;
+    box-sizing: border-box;
+}
+.d-row > div {
+    display: inline-block !important ;
+}
+
+#commerceInfo{
+    width: 40%;
+    font-size: 0.75rem;
+    padding-bottom: 4rem;
+}
+#commerceName{
+    font-size: 1rem !important;
+}
+#invoiceInfo{
+
+    width: 20%;
+    padding-left: 2rem;
+}
+.text-center{
+    text-align: center;
+}
+
+#logo > img {
+    width: 9rem;
+    height: 8rem;
+}
+#logo{
+    width: 30%;
+    text-align: center;
+}
+.strong{
+    font-weight: bold;
+}
+
+.small{
+    font-size: 0.75rem;
+}
+
+#invoice-title{
+    margin-bottom: 2rem;
+}
+
+#dateInvoice{
+
+    margin-top: 2rem;
+}
+
+#separator{
+    margin-left: 1rem;
+
+    width: 94%;
+    border: #858796 solid 3px;
+    border-radius: 0.05px;
+    margin-top: -2.75rem;
+}
+
+#clientInfo{
+    margin-left: 3rem;
+
+    padding-top: 20px;
+    font-size: 0.80rem;
+}
+#itemsTable{
+    margin-left: 2rem;
+
+    height: 60%;
+}
+
+#itemsTable > table {
+    padding-top: 6rem;
+    font-size: 0.55rem;
+    text-align: center;
+
+    width: 94%;
+}
+
+#itemsTable > table > tbody{
+    font-size: 0.50rem;
+}
+#itemsTable > table > thead > tr > th{
+    padding: 0.23rem;
+    background-color: #A8A8A8;
+    border: #1d2124 solid 1px;
+    border-radius: 3px;
+    font-weight: normal;
+    font-size: 0.45rem;
+}
+
+.altSeparator{
+    margin-left: 1rem;
+    width: 96%;
+    border: 2px solid #1d2124;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    text-align: center;
+    background-color: #A8A8A8;
+    font-weight: bold;
+}
+
+#isrLeyend{
+    font-size: 0.65rem; font-weight: bold; padding-right: 1rem; padding-bottom: 4.6rem;
+}
+
+#totalN{
+    position: absolute;
+    left: 38rem
+}

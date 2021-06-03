@@ -56,9 +56,14 @@ class CategoriaController extends Controller
 
     public function destroy(Request $request, $id)
     {
-       $categoria= Categoria::find($id);
-       $categoria->delete();
-        return redirect()->route('categorias.index')->with('status','success')->with('statusT', 'Se ha eliminado con exito');
+
+        try {
+            $categoria= Categoria::find($id);
+            $categoria->delete();
+            return redirect()->route('categorias.index')->with('status','success')->with('statusT', 'Se ha eliminado con exito');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->route('productos.index')->with('status', 'error')->with('statusT', 'No se ha podido eliminar con exito');
+        }
 
     }
 }

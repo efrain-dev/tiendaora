@@ -2,24 +2,24 @@
     <div class="d-flex justify-content-around align-items-center my-3">
 
 
-            <form class="form-row my-3 col-12">
+        <form class="form-row my-3 col-12">
 
-                <div class="m-auto">
-                    <div class="d-inline-flex m-lg-auto my-4">
-                        <h5 class="m-auto" for="from">Desde</h5>
-                        <input  oninput="cambiarFecha()"  type="date" class="form-control" name="from"  id="nom_buscar_d1" wire:model="from">
-                    </div>
-                    <div class="d-inline-flex m-lg-auto my-4">
-                        <h5 class="m-auto" for="to">Hasta</h5>
-                        <input  oninput="cambiarFecha2()" type="date" class="form-control" name="to"    id="nom_buscar_d2" wire:model="to">
-                    </div>
+            <div class="m-auto">
+                <div class="d-inline-flex m-lg-auto my-4">
+                    <h5 class="m-auto" for="from">Desde</h5>
+                    <input  oninput="cambiarFecha()"  type="date" class="form-control" name="from"  id="nom_buscar_d1" wire:model="from">
                 </div>
-                <div>
-                    <a class="btn btn-success  d-flex justify-content-around align-items-center"
-                       href="{{route('facturacion-ventas')}}"><i class="fas fa-plus text-white"></i> &nbsp;Nuevo
-                    </a>
+                <div class="d-inline-flex m-lg-auto my-4">
+                    <h5 class="m-auto" for="to">Hasta</h5>
+                    <input  oninput="cambiarFecha2()" type="date" class="form-control" name="to"    id="nom_buscar_d2" wire:model="to">
                 </div>
-            </form>
+            </div>
+            <div>
+                <a class="btn btn-success  d-flex justify-content-around align-items-center"
+                   href="{{route('facturacion-compras')}}"><i class="fas fa-plus text-white"></i> &nbsp;Nuevo
+                </a>
+            </div>
+        </form>
 
 
     </div>
@@ -32,31 +32,30 @@
             <th scope="col">Empleado</th>
             <th scope="col">Factura</th>
             <th scope="col">Total</th>
+
         </tr>
         </thead>
         <tbody>
-        @foreach($ventas as $venta)
+        @foreach($compras as $compra)
             <tr>
-                <th scope="row">{{$venta->fecha}}</th>
-                <th scope="row">{{$venta->cliente}}</th>
-                <th scope="row">{{$venta->empleado}}</th>
-                <th scope="row">{{$venta->factura}}</th>
-                <th scope="row">{{$venta->total}}</th>
-                <td class="d-flex justify-content-around">
-                    <a class="btn btn-danger " href="javascript:void(0)"
-                       onclick="eliminar({{$venta->id_venta}})">Anular</a>
-                    <a class="btn btn-success " href="{{route('pdf-factura',$venta->id_venta)}}" target="_blank">PDF</a>
+                <th scope="row">{{$compra->fecha}}</th>
+                <th scope="row">{{$compra->proveedor}}</th>
+                <th scope="row">{{$compra->empleado}}</th>
+                <th scope="row">{{$compra->factura}}</th>
+                <th scope="row">{{$compra->total}}</th>
+                <td class="d-flex justify-content-center">
+                    <a class="btn btn-danger" href="javascript:void(0)"
+                       onclick="eliminar({{$compra->id_compra}})">Anular</a>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
     <div class="d-flex justify-content-center align-content-center my-0 py-0">
-        {{ $ventas->links('pagination',['is_livewire' => true]) }}
+        {{ $compras->links('pagination',['is_livewire' => true]) }}
     </div>
 </div>
 @push('scripts')
-
     <script>
         function eliminar(id) {
             Swal.fire({
@@ -71,7 +70,7 @@
 
             }).then((result) => {
                 if (result.isConfirmed) {
-                     @this.call('destroy', id)
+                @this.call('destroy', id)
                 }
             })
         }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\ProductoPostRequest;
 use App\Models\Producto;
 use Illuminate\Http\Request;
@@ -13,11 +14,11 @@ class ProductoController extends Controller
     public function index(Request $request)
     {
         $data = $request->data;
-        $productos =   DB::select('begin
-        index_productos(\''.$data.'\');
+        $productos = DB::select('begin
+        index_productos(\'' . $data . '\');
         end;');
         $productos = $this->arrayPaginator($productos, $request);
-        return view('productos.index',['productos'=>$productos,'data'=>$data]);
+        return view('productos.index', ['productos' => $productos, 'data' => $data]);
     }
 
     public function create()
@@ -37,17 +38,14 @@ class ProductoController extends Controller
         $producto->precio_compra = $data['precio_compra'];
         $producto->categoria_id_categoria = $data['categoria_id_categoria'];
         $producto->save();
-        return redirect()->route('productos.index')->with('status','success')->with('statusT', 'Se ha ingresado con exito');
+        return redirect()->route('productos.index')->with('status', 'success')->with('statusT', 'Se ha ingresado con exito');
     }
-
-
-
 
 
     public function edit($id)
     {
         $producto = Producto::find($id);
-        return view('productos.edit',compact('producto'));
+        return view('productos.edit', compact('producto'));
 
     }
 
@@ -63,21 +61,25 @@ class ProductoController extends Controller
         $producto->save();
         $procedureName = 'update_precio_venta';
         $bindings = [
-            'id_producto'  => $producto->id_producto,
+            'id_producto' => $producto->id_producto,
         ];
         $result = DB::executeProcedure($procedureName, $bindings);
-        return redirect()->route('productos.index')->with('status','success')->with('statusT', 'Se ha actualizado con exito');
+        return redirect()->route('productos.index')->with('status', 'success')->with('statusT', 'Se ha actualizado con exito');
 
     }
 
 
     public function destroy(Request $request, $id)
     {
-        $producto= Producto::find($id);
-        $producto->delete();
-        return redirect()->route('productos.index')->with('status','success')->with('statusT', 'Se ha eliminado con exito');
-
+        try {
+            $producto = Producto::find($id);
+            $producto->delete();
+            return redirect()->route('productos.index')->with('status', 'success')->with('statusT', 'Se ha eliminado con exito');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->route('productos.index')->with('status', 'error')->with('statusT', 'No se ha podido eliminar con exito');
+        }
     }
+
     private function arrayPaginator($array, $request)
     {
         $total = count($array);
@@ -87,6 +89,7 @@ class ProductoController extends Controller
         $items = array_slice($array, $offset, $perPage);
         return new LengthAwarePaginator($items, $total, $perPage, $page, ['path' => $request->url(), 'query' => $request->query()]);
     }
+
     public function getProductos(Request $request)
     {
         $query = DB::select('begin

@@ -19,7 +19,8 @@
                     <td>{{$cliente->nombre_cliente}}</td>
                     <td>{{$cliente->direccion_cliente}}</td>
                     <td>{{$cliente->telefono}}</td>
-                    <td><a class="btn btn-success"
+                    <td class="d-flex justify-content-around">
+                        <a class="btn btn-success"
                            href="{{route('clientes.edit',['cliente'=>$cliente->id_cliente])}}">Editar</a>
 
                         <a class="btn btn-danger" href="javascript:void(0)"

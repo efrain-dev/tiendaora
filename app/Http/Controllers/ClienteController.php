@@ -53,8 +53,13 @@ class ClienteController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        $cliente= Cliente::find($id);
-        $cliente->delete();
-        return redirect()->route('clientes.index')->with('status','success')->with('statusT', 'Se ha eliminado con exito');
+        try {
+            $cliente= Cliente::find($id);
+            $cliente->delete();
+            return redirect()->route('clientes.index')->with('status','success')->with('statusT', 'Se ha eliminado con exito');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->route('productos.index')->with('status', 'error')->with('statusT', 'No se ha podido eliminar con exito');
+        }
+
     }
 }
