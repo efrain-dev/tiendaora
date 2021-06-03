@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TransaccionesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,11 +24,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::resource('categorias',\App\Http\Controllers\CategoriaController::class);
 Route::resource('productos',\App\Http\Controllers\ProductoController::class);
-Route::resource('impuestoventas',\App\Http\Controllers\ImpuestoVentaController::class);
-Route::resource('impuestocompras',\App\Http\Controllers\ImpuestoCompraController::class);
 Route::resource('clientes',\App\Http\Controllers\ClienteController::class);
 Route::resource('proveedors',\App\Http\Controllers\ProveedorController::class);
-Route::resource('anulacionventas',\App\Http\Controllers\AnulacionVentaController::class);
+Route::get('/impuesto-ventas',[TransaccionesController::class,'impuestoVentasIndex'])->name('impuesto-ventas');
+Route::get('/impuesto-compras',[TransaccionesController::class,'impuestoComprasIndex'])->name('impuesto-compras');
+Route::get('/anulacion-ventas',[TransaccionesController::class,'anulacionVentasIndex'])->name('anulacion-ventas');
+Route::get('/anulacion-compras',[TransaccionesController::class,'anulacionComprasIndex'])->name('anulacion-compras');
 Route::get('/facturacion-ventas', \App\Http\Livewire\FacturacionVenta::class)->name('facturacion-ventas');
 Route::get('/facturacion-compras', \App\Http\Livewire\FacturacionCompra::class)->name('facturacion-compras');
 Route::get('/mostrar-ventas', \App\Http\Livewire\MostrarVentas::class)->name('mostrar-ventas');

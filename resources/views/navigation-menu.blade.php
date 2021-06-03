@@ -41,10 +41,10 @@ Anulaciones
 
                             <x-slot name="content">
                                 <!-- Team Settings -->
-                                <x-jet-dropdown-link href="{{route('anulacionventas.index')}}">
+                                <x-jet-dropdown-link href="{{route('anulacion-ventas')}}">
                                     Ventas
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{route('anulacionventas.index')}}">
+                                <x-jet-dropdown-link href="{{route('anulacion-compras')}}">
                                     Compras <!--Todavía no funciona----------------------------------------->
                                 </x-jet-dropdown-link>
                             </x-slot>
@@ -175,10 +175,10 @@ Impuestos
 
                             <x-slot name="content">
                                 <!-- Team Settings -->
-                                <x-jet-dropdown-link href="{{route('impuestoventas.index')}}">
+                                <x-jet-dropdown-link href="{{route('impuesto-ventas')}}">
                                     Ventas
                                 </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{route('impuestocompras.index')}}">
+                                <x-jet-dropdown-link href="{{route('impuesto-compras')}}">
                                     Compras
                                 </x-jet-dropdown-link>
                             </x-slot>
