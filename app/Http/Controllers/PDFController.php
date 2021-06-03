@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use NumberFormatter;
 
 class PDFController extends Controller
 {
@@ -26,7 +27,7 @@ class PDFController extends Controller
         foreach ($detalles as $detalle){
             $total =+$detalle->total;
         }
-        $formatterES = new \NumberFormatter("es", \NumberFormatter::SPELLOUT);
+        $formatterES = new NumberFormatter("es", NumberFormatter::SPELLOUT);
         $decimales = explode(".", number_format($total, 2, ".", ""));
         $total_letras = strtoupper($formatterES->format($decimales[0])) . ' QUETZALES ' . $decimales[1] . '/100';
 
