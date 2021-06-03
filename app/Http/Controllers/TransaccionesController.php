@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AnulacionCompra;
 use App\Models\AnulacionVenta;
 use App\Models\ImpuestoCompra;
 use App\Models\ImpuestoVenta;
@@ -12,22 +13,22 @@ class TransaccionesController extends Controller
     public function anulacionVentasIndex()
     {
         $anulacionventas = AnulacionVenta::all();
-        return view('AnulacionVentas.index',compact('anulacionventas'));
+        return view('transacciones.anulacion-ventas',compact('anulacionventas'));
     }
     public function anulacionComprasIndex()
     {
-        $anulacionventas = AnulacionVenta::all();
-        return view('AnulacionVentas.index',compact('anulacionventas'));
+        $anulacioncompras = AnulacionCompra::all();
+        return view('transacciones.anulacion-compras',compact('anulacioncompras'));
     }
     public function impuestoComprasIndex()
     {
         $impuestocompras = ImpuestoCompra::all();
-        return view('impuestocompras.index',compact('impuestocompras'));
+        return view('transacciones.impuesto-compras',compact('impuestocompras'));
     }
     public function impuestoVentasIndex()
     {
         $impuestoventas = ImpuestoVenta::all();
-        return view('impuestoventas.index',compact('impuestoventas'));
+        return view('transacciones.impuesto-ventas',compact('impuestoventas'));
 
     }
 }

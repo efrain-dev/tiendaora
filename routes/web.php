@@ -33,3 +33,5 @@ Route::get('/anulacion-compras',[TransaccionesController::class,'anulacionCompra
 Route::get('/facturacion-ventas', \App\Http\Livewire\FacturacionVenta::class)->name('facturacion-ventas');
 Route::get('/facturacion-compras', \App\Http\Livewire\FacturacionCompra::class)->name('facturacion-compras');
 Route::get('/mostrar-ventas', \App\Http\Livewire\MostrarVentas::class)->name('mostrar-ventas');
+Route::get('/mostrar-compras', \App\Http\Livewire\MostrarCompras::class)->name('mostrar-compras');
+Route::get('/descargar-pdf/{id}', [\App\Http\Controllers\PDFController::class,'downloadPDF'])->name('pdf-factura');

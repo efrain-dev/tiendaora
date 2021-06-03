@@ -19,7 +19,8 @@
                     <td>{{$proveedor->nit_proveedor}}</td>
                     <td>{{$proveedor->direccion_proveedor}}</td>
                     <td>{{$proveedor->telefono}}</td>
-                    <td><a class="btn btn-success"
+                    <td class="d-flex justify-content-around">
+                        <a class="btn btn-success"
                            href="{{route('proveedors.edit',['proveedor'=>$proveedor->id_proveedor])}}">Editar</a>
 
                         <a class="btn btn-danger" href="javascript:void(0)" onclick="eliminarproveedor({{$proveedor->id_proveedor}})">Eliminar</a>

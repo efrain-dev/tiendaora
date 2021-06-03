@@ -122,7 +122,11 @@
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-oci8" />
       <path value="$PROJECT_DIR$/vendor/yajra/laravel-pdo-via-oci8" />
       <path value="$PROJECT_DIR$/vendor/asantibanez/livewire-select" />
-      <path value="$PROJECT_DIR$/vendor/rawilk/laravel-form-components" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

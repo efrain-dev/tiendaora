@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class=" container p-2" id="app">
+    <div class="p-5" id="app">
                 <div class="d-flex justify-content-around align-items-center my-3">
 
                     <form class="col-lg-10" method="GET" action="{{route('productos.index')}}">
@@ -41,7 +41,8 @@
                     <td>{{$producto->precio_compra}}</td>
                     <td>{{$producto->precio_venta}}</td>
                     <td>{{$producto->categoria}}</td>
-                    <td><a class="btn btn-success"
+                    <td class="d-flex justify-content-around">
+                        <a class="btn btn-success"
                            href="{{route('productos.edit',['producto'=>$producto->id_producto])}}">Editar</a>
 
                         <a class="btn btn-danger" href="javascript:void(0)"

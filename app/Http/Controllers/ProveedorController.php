@@ -14,7 +14,7 @@ class ProveedorController extends Controller
     public function index()
     {
         $proveedors = Proveedor::all();
-        return view('proveedors.index',compact('proveedors'));
+        return view('proveedors.index', compact('proveedors'));
     }
 
     public function create()
@@ -33,17 +33,14 @@ class ProveedorController extends Controller
         $proveedor->direccion_proveedor = $data['direccion_proveedor'];
         $proveedor->telefono = $data['telefono'];
         $proveedor->save();
-        return redirect()->route('proveedors.index')->with('status','success')->with('statusT', 'Se ha ingresado con exito');
+        return redirect()->route('proveedors.index')->with('status', 'success')->with('statusT', 'Se ha ingresado con exito');
     }
-
-
-
 
 
     public function edit($id)
     {
         $proveedor = Proveedor::find($id);
-        return view('proveedors.edit',compact('proveedor'));
+        return view('proveedors.edit', compact('proveedor'));
 
     }
 
@@ -56,15 +53,20 @@ class ProveedorController extends Controller
         $proveedor->direccion_proveedor = $data['direccion_proveedor'];
         $proveedor->telefono = $data['telefono'];
         $proveedor->save();
-        return redirect()->route('proveedors.index')->with('status','success')->with('statusT', 'Se ha ingresado con exito');
+        return redirect()->route('proveedors.index')->with('status', 'success')->with('statusT', 'Se ha ingresado con exito');
     }
 
 
     public function destroy(Request $request, $id)
     {
-        $proveedor= Proveedor::find($id);
-        $proveedor->delete();
-        return redirect()->route('proveedors.index')->with('status','success')->with('statusT', 'Se ha eliminado con exito');
+        try {
+            $proveedor = Proveedor::find($id);
+            $proveedor->delete();
+            return redirect()->route('proveedors.index')->with('status', 'success')->with('statusT', 'Se ha eliminado con exito');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->route('productos.index')->with('status', 'error')->with('statusT', 'No se ha podido eliminar con exito');
+        }
+
 
     }
 }

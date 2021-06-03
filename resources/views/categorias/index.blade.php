@@ -15,7 +15,8 @@
                     <th scope="row">{{$categoria->id_categoria}}</th>
                     <td>{{$categoria->nombre_categoria}}</td>
                     <td>{{$categoria->descripcion_categoria}}</td>
-                    <td><a class="btn btn-success"
+                    <td class="d-flex justify-content-around">
+                        <a class="btn btn-success"
                            href="{{route('categorias.edit',['categoria'=>$categoria->id_categoria])}}">Editar</a>
 
                         <a class="btn btn-danger" href="javascript:void(0)"
