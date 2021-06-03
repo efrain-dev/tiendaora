@@ -1,6 +1,7 @@
-<div class="container p-2">
+<div class="container p-2 my-5 bg-white shadow-lg rounded-lg">
+<div style="text-align: center"><h3  class="display-4">Historial Compras</h3></div>
+    <hr>
     <div class="d-flex justify-content-around align-items-center my-3">
-
 
         <form class="form-row my-3 col-12">
 
@@ -28,7 +29,7 @@
         <thead>
         <tr>
             <th scope="col">Fecha</th>
-            <th scope="col">Cliente</th>
+            <th scope="col">Proveedor</th>
             <th scope="col">Empleado</th>
             <th scope="col">Factura</th>
             <th scope="col">Total</th>

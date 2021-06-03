@@ -1,5 +1,6 @@
 <x-app-layout>
-    <div class="p-5" id="app">
+    <div class="p-5 m-5 bg-white shadow-lg rounded-lg">
+        <div style="text-align: center"><h3  class="display-4">Productos</h3></div>
                 <div class="d-flex justify-content-around align-items-center my-3">
 
                     <form class="col-lg-10" method="GET" action="{{route('productos.index')}}">
