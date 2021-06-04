@@ -106,7 +106,7 @@ class FacturacionCompra extends Component
     public function setProducto()
     {
 
-        $this->validate(['cantidad_compra' => 'required|numeric|min:1', 'precio_compra' => 'required|numeric']);
+        $this->validate(['cantidad_compra' => 'required|numeric|min:1', 'precio_compra' =>"required|unique|numeric"]);
         $this->resetAndInsert();
         $this->emit('focus-input-product');
 

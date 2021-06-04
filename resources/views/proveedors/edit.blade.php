@@ -1,6 +1,8 @@
 <x-app-layout>
-    <form class="container p-5"
+    <form class="container p-5  my-5 bg-white shadow-lg rounded-lg"
           action="{{route('proveedors.update',['proveedor'=>$proveedor->id_proveedor])}}" method="POST">
+        <div class="d-flex align-items-center justify-content-center"><h3  class="display-4 inline-block">Editar Proveedor</h3></div>
+        <hr>
         <ul class="text-danger p-3">
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
