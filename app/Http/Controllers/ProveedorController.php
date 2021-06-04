@@ -64,7 +64,7 @@ class ProveedorController extends Controller
             $proveedor->delete();
             return redirect()->route('proveedors.index')->with('status', 'success')->with('statusT', 'Se ha eliminado con exito');
         } catch (\Illuminate\Database\QueryException $e) {
-            return redirect()->route('productos.index')->with('status', 'error')->with('statusT', 'No se ha podido eliminar con exito');
+            return redirect()->route('proveedors.index')->with('status', 'error')->with('statusT', 'No se ha podido eliminar con exito');
         }
 
 
