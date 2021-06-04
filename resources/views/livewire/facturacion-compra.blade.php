@@ -99,7 +99,6 @@
             <div class="form-group col-md-6 my-2">
                 <input class="form-control String @error('precio_compra') is-invalid @enderror" placeholder="Precio"
                        wire:model="precio_compra"
-                       disabled
                        onkeypress="return check_digit(event,this,8,5);" autocomplete="off" type="text"
                        name="precio_compra">
                 @error('precio_compra') <span class="text-red-500">{{ $message }}</span>@enderror

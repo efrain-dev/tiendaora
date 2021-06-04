@@ -106,7 +106,7 @@ class FacturacionCompra extends Component
     public function setProducto()
     {
 
-        $this->validate(['cantidad_compra' => 'required|numeric|min:1', 'precio_compra' =>"required|unique|numeric"]);
+        $this->validate(['cantidad_compra' => 'required|numeric|min:1', 'precio_compra' =>"required|numeric"]);
         $this->resetAndInsert();
         $this->emit('focus-input-product');
 
@@ -177,7 +177,7 @@ class FacturacionCompra extends Component
                 'timeout' => 3000
             ]);
         } else {
-            $this->validate(['nombre_proveedor' => 'required', 'nit_proveedor' => 'required', 'no_compra' => 'required']);
+            $this->validate(['nombre_proveedor' => 'required', 'nit_proveedor' => 'required', 'no_compra' => 'required|unique:factura_compra']);
             $this->updateInsertProveedor();
             $factura = new FacturaCompra();
             $factura->proveedor_id_proveedor = $this->id_proveedor;
