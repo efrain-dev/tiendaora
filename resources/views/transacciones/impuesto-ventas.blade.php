@@ -1,5 +1,6 @@
 <x-app-layout>
-    <div class=" container p-2" id="app">
+    <div class="container p-2 my-5 bg-white shadow-lg rounded-lg">
+        <div style="text-align: center"><h3  class="display-4">Historial Impuestos Venta</h3></div>
 
         <table class="table">
             <thead>
@@ -21,5 +22,8 @@
             @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-center align-content-center my-2">
+            {{$impuestoventas->links()}}
+        </div>
     </div>
 </x-app-layout>

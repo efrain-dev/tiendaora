@@ -14,7 +14,7 @@ use Livewire\Component;
 
 class FacturacionCompra extends Component
 {
-    public $nit_proveedor, $id_proveedor, $nombre_proveedor, $direccion_proveedor, $cantidad, $total, $isr_total, $iva_total, $subtotal;
+    public $nit_proveedor, $id_proveedor, $nombre_proveedor,$no_compra, $direccion_proveedor, $cantidad, $total, $isr_total, $iva_total, $subtotal;
     public $id_producto, $precio_compra, $existencia, $nombre_producto, $cantidad_compra;
     public $detalle_compra = [];
     public $buscar;
@@ -137,6 +137,8 @@ class FacturacionCompra extends Component
         $this->isr_total = null;
         $this->iva_total = null;
         $this->subtotal = null;
+        $this->no_compra = null;
+
     }
 
     private function resetAndInsert()
@@ -175,11 +177,12 @@ class FacturacionCompra extends Component
                 'timeout' => 3000
             ]);
         } else {
-            $this->validate(['nombre_proveedor' => 'required', 'nit_proveedor' => 'required']);
+            $this->validate(['nombre_proveedor' => 'required', 'nit_proveedor' => 'required', 'no_compra' => 'required']);
             $this->updateInsertProveedor();
             $factura = new FacturaCompra();
             $factura->proveedor_id_proveedor = $this->id_proveedor;
             $factura->users_id = Auth::user()->id;
+            $factura->no_compra = $this->no_compra;
             $factura->save();
 
             foreach ($this->detalle_compra as $detalle) {

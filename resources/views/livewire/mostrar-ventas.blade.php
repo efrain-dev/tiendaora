@@ -1,6 +1,6 @@
-<div class="container p-2">
-    <div class="d-flex justify-content-around align-items-center my-3">
-
+<div class="container p-2 my-5 bg-white shadow-lg rounded-lg">
+    <div style="text-align: center"><h3  class="display-4">Historial Ventas</h3></div>
+    <hr>
 
             <form class="form-row my-3 col-12">
 
@@ -21,8 +21,6 @@
                 </div>
             </form>
 
-
-    </div>
 
     <table class="table">
         <thead>

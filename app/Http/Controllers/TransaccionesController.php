@@ -12,22 +12,22 @@ class TransaccionesController extends Controller
 {
     public function anulacionVentasIndex()
     {
-        $anulacionventas = AnulacionVenta::all();
+        $anulacionventas = AnulacionVenta::paginate(10);
         return view('transacciones.anulacion-ventas',compact('anulacionventas'));
     }
     public function anulacionComprasIndex()
     {
-        $anulacioncompras = AnulacionCompra::all();
+        $anulacioncompras = AnulacionCompra::paginate(10);
         return view('transacciones.anulacion-compras',compact('anulacioncompras'));
     }
     public function impuestoComprasIndex()
     {
-        $impuestocompras = ImpuestoCompra::all();
+        $impuestocompras = ImpuestoCompra::paginate(10);
         return view('transacciones.impuesto-compras',compact('impuestocompras'));
     }
     public function impuestoVentasIndex()
     {
-        $impuestoventas = ImpuestoVenta::all();
+        $impuestoventas = ImpuestoVenta::paginate(10);
         return view('transacciones.impuesto-ventas',compact('impuestoventas'));
 
     }

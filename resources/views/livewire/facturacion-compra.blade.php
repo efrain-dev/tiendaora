@@ -1,14 +1,28 @@
 <div>
 
-    <div class="container shadow-lg rounded p-5 mt-5">
-        <div style="text-align: center"><h3 class="my-3 display-5">Facturacion Compras</h3></div>
+    <div class="container shadow-lg rounded p-5 mt-5 bg-white">
+        <div style="text-align: center;">
 
-        <h3 class="my-3 display-5">Datos de proveedor</h3>
+        <h3 class="my-3 display-5">Facturacion Compras</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+
+                <h3 class="my-3 display-5">Datos de proveedor</h3>
+            </div>
+            <div class="col-sm d-flex align-items-center">
+                <input class="form-control @error('no_compra') is-invalid @enderror" type="text"
+                       name="no_compra" maxlength="150" autocomplete="off" placeholder="Ingrese el numero de factura"
+                       wire:model="no_compra">
+                @error('no_compra') <span class="text-red-500">{{ $message }}</span>@enderror
+            </div>
+        </div>
         <hr>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label class="form-label">Nit</label>
-                <input class="form-control @error('nit_proveedor') is-invalid @enderror" type="text" name="nit_proveedor"
+                <input class="form-control @error('nit_proveedor') is-invalid @enderror" type="text"
+                       name="nit_proveedor"
                        maxlength="9" wire:model="nit_proveedor"
                        wire:keydown.tab="buscarProveedor()">
                 @error('nit_proveedor') <span class="text-red-500">{{ $message }}</span>@enderror
@@ -180,7 +194,7 @@
                     if (resultado.isConfirmed) {
                     @this.call('editDetalle', datos)
                     } else {
-                        SwalAlert('question', 'No se modifico nada',3000)
+                        SwalAlert('question', 'No se modifico nada', 3000)
 
                     }
                 });
