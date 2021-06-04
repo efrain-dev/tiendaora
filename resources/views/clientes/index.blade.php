@@ -1,5 +1,6 @@
 <x-app-layout>
-    <div class="container p-2">
+    <div class="container p-2 my-5 bg-white shadow-lg rounded-lg">
+        <div style="text-align: center"><h3  class="display-4">Clientes</h3></div>
         <table class="table">
             <thead>
             <tr>
@@ -38,6 +39,9 @@
             @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-center align-content-center my-2">
+            {{$clientes->links()}}
+        </div>
     </div>
     @push('scripts')
         <script>

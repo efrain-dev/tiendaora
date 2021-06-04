@@ -1,6 +1,6 @@
 <div>
 
-    <div class="container shadow-lg rounded p-5 mt-5">
+    <div class="container shadow-lg rounded p-5 mt-5 bg-white">
         <div style="text-align: center"><h3 class="my-3 display-5">Facturacion Ventas</h3></div>
         <h3 class="my-3 display-5">Datos de cliente</h3>
         <hr>
