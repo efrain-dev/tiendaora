@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ClientePostRequest extends FormRequest
 {
@@ -24,7 +25,8 @@ class ClientePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'nit_cliente'=>'required',
+            'nit_cliente'=>['required',
+                Rule::unique('cliente', 'nit_cliente')->ignore($this->cliente)],
             'nombre_cliente'=>'required',
             'direccion_cliente'=>'nullable',
             'telefono'=>'required',

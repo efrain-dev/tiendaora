@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="container p-2 my-5 bg-white shadow-lg rounded-lg">
-        <div style="text-align: center"><h3  class="display-4">Proveedores</h3></div>
+    <div class="container p-5 my-5 bg-white shadow-lg rounded-lg">
+        <div class="d-flex align-items-center justify-content-around"><h3  class="display-4 inline-block">Proveedores</h3> <a class="btn btn-success" href="{{route('proveedors.create')}}">Crear</a> </div>
         <table class="table">
             <thead>
             <tr>

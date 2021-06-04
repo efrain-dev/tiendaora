@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProveedorPostRequest extends FormRequest
 {
@@ -26,7 +27,8 @@ class ProveedorPostRequest extends FormRequest
         return [
 
             'nombre_proveedor'=>'required',
-            'nit_proveedor'=>'required',
+            'nit_proveedor'=>['required',
+                Rule::unique('proveedor', 'nit_proveedor')->ignore($this->proveedor)],
             'direccion_proveedor'=>'required',
             'telefono'=>'required',
         ];

@@ -1,6 +1,8 @@
 <x-app-layout>
 
-    <form class="container g-5" action="{{route('clientes.update', ['cliente'=>$cliente->id_cliente])}}" method="POST">
+    <form class="container p-5  my-5 bg-white shadow-lg rounded-lg" action="{{route('clientes.update', ['cliente'=>$cliente->id_cliente])}}" method="POST">
+        <div class="d-flex align-items-center justify-content-center"><h3  class="display-4 inline-block">Editar Cliente</h3></div>
+        <hr>
         <ul class="text-danger p-3">
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
