@@ -25,8 +25,7 @@ class ClientePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'nit_cliente'=>['required',
-                Rule::unique('cliente', 'nit_cliente')->ignore($this->cliente)],
+            'nit_cliente'=>['required', Rule::unique('cliente', 'nit_cliente')->ignore($this->cliente)],
             'nombre_cliente'=>'required',
             'direccion_cliente'=>'nullable',
             'telefono'=>'required',
