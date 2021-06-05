@@ -1,6 +1,8 @@
 <x-app-layout>
     <div class="container p-5 my-5 bg-white shadow-lg rounded-lg">
         <div class="d-flex align-items-center justify-content-around"><h3  class="display-4 inline-block">Clientes</h3> <a class="btn btn-success" href="{{route('clientes.create')}}">Crear</a> </div>
+        <div class="table-responsive">
+
         <table class="table">
             <thead>
             <tr>
@@ -39,6 +41,7 @@
             @endforeach
             </tbody>
         </table>
+        </div>
         <div class="d-flex justify-content-center align-content-center my-2">
             {{$clientes->links()}}
         </div>

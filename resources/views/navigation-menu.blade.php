@@ -21,7 +21,7 @@
                             {{ __($link['text']) }}
                         </x-jet-nav-link>
                     @endforeach
-                        <x-jet-dropdown align="right" width="80">
+                        <x-jet-dropdown align="center" width="20">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
@@ -40,14 +40,20 @@ Ventas
                             <x-slot name="content">
                                 <!-- Team Settings -->
                                 <x-jet-dropdown-link href="{{route('facturacion-ventas')}}">
-                                    Crear
+                                    Facturar
                                 </x-jet-dropdown-link>
                                 <x-jet-dropdown-link href="{{route('mostrar-ventas')}}">
-                                    Mostrar
+                                    Mostrar Ventas
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{route('anulacion-ventas')}}">
+                                    Anulaciones
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{route('impuesto-ventas')}}">
+                                    Impuestos
                                 </x-jet-dropdown-link>
                             </x-slot>
                         </x-jet-dropdown>
-                        <x-jet-dropdown align="right" width="80">
+                        <x-jet-dropdown align="right" width="20">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
@@ -66,42 +72,20 @@ Compras
                             <x-slot name="content">
                                 <!-- Team Settings -->
                                 <x-jet-dropdown-link href="{{route('facturacion-compras')}}">
-                                    Crear
+                                    Facturar
                                 </x-jet-dropdown-link>
                                 <x-jet-dropdown-link href="{{route('mostrar-compras')}}">
-                                    Mostrar
-                                </x-jet-dropdown-link>
-                            </x-slot>
-                        </x-jet-dropdown>
-                        <x-jet-dropdown align="right" width="80">
-                            <x-slot name="trigger">
-                                <span class="inline-flex rounded-md">
-                                    <button type="button"
-                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-Anulaciones
-                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                             viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd"
-                                                  d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                                  clip-rule="evenodd"/>
-                                        </svg>
-                                    </button>
-                                </span>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <!-- Team Settings -->
-                                <x-jet-dropdown-link href="{{route('anulacion-ventas')}}">
-                                    Ventas
+                                    Mostrar Compras
                                 </x-jet-dropdown-link>
                                 <x-jet-dropdown-link href="{{route('anulacion-compras')}}">
-                                    Compras <!--Todavía no funciona----------------------------------------->
+                                    Anaulacion
+                                </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{route('impuesto-compras')}}">
+                                    Impuestos
                                 </x-jet-dropdown-link>
                             </x-slot>
                         </x-jet-dropdown>
-
-
-                    <x-jet-dropdown align="right" width="80">
+                    <x-jet-dropdown align="right" width="10">
                         <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
@@ -128,7 +112,7 @@ Productos
                         </x-slot>
                     </x-jet-dropdown>
 
-                    <x-jet-dropdown align="right" width="80">
+                    <x-jet-dropdown align="right" width="10">
                         <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
@@ -154,7 +138,7 @@ Proveedores
                             </x-jet-dropdown-link>
                         </x-slot>
                     </x-jet-dropdown>
-                    <x-jet-dropdown align="right" width="80">
+                    <x-jet-dropdown align="right" width="10">
                         <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
@@ -180,7 +164,7 @@ Categorias
                             </x-jet-dropdown-link>
                         </x-slot>
                     </x-jet-dropdown>
-                    <x-jet-dropdown align="right" width="80">
+                    <x-jet-dropdown align="right" width="10">
                         <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
@@ -207,32 +191,6 @@ Clientes
                         </x-slot>
                     </x-jet-dropdown>
 
-                        <x-jet-dropdown align="right" width="80">
-                            <x-slot name="trigger">
-                                <span class="inline-flex rounded-md">
-                                    <button type="button"
-                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-Impuestos
-                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                             viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd"
-                                                  d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                                                  clip-rule="evenodd"/>
-                                        </svg>
-                                    </button>
-                                </span>
-                            </x-slot>
-
-                            <x-slot name="content">
-                                <!-- Team Settings -->
-                                <x-jet-dropdown-link href="{{route('impuesto-ventas')}}">
-                                    Ventas
-                                </x-jet-dropdown-link>
-                                <x-jet-dropdown-link href="{{route('impuesto-compras')}}">
-                                    Compras
-                                </x-jet-dropdown-link>
-                            </x-slot>
-                        </x-jet-dropdown>
 
                 </div>
             </div>
@@ -241,7 +199,7 @@ Impuestos
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
-                        <x-jet-dropdown align="right" width="60">
+                        <x-jet-dropdown align="right" width="25">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
@@ -297,7 +255,7 @@ Impuestos
                 <div class="ml-3 relative">
 
 
-                    <x-jet-dropdown align="right" width="48">
+                    <x-jet-dropdown align="right" width="25">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button

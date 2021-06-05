@@ -2,16 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Controllers\PDFController;
-use App\Models\Categoria;
+
 use App\Models\Cliente;
 use App\Models\DetalleVenta;
 use App\Models\FacturaVenta;
 use App\Models\Producto;
-use Barryvdh\DomPDF\Facade as PDF;
-use Exception;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
