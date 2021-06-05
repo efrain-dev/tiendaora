@@ -248,7 +248,7 @@ class FacturacionVenta extends Component
         $indice = array_search($this->id_producto, array_column($this->detalle_venta, 'producto_id_producto'));
 
         if (false !== $indice) {
-            if (!(($this->detalle_venta[$indice]['cantidad'] + $this->cantidad_venta) >= $this->existencia)) {
+            if (!(($this->detalle_venta[$indice]['cantidad'] + $this->cantidad_venta) > $this->existencia)) {
                 $this->detalle_venta[$indice]['cantidad'] += $this->cantidad_venta;
             } else {
                 $this->emit('swal:alert', [
