@@ -19,7 +19,7 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.0",
         "yajra/laravel-oci8": "^8.4",
-      "ext-intl": "*"
+        "ext-intl": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
